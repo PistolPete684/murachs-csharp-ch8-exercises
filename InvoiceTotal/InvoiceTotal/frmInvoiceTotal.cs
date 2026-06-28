@@ -64,11 +64,13 @@ namespace InvoiceTotal
                 {
                     strSubtotals += sutotal + "\n"; 
                 }
-                MessageBox.Show("The subtotals are:\n"
-                    + strSubtotals + "\n",
-                    "Subtotal List"
-                );
+
             }
+
+            MessageBox.Show("The subtotals are:\n"
+                + strSubtotals + "\n",
+                "Subtotal List"
+            );
 
             this.Close();
         }
