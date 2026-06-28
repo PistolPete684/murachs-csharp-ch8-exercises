@@ -9,7 +9,8 @@ namespace InvoiceTotal
 
         // TODO: declare class variables for array and list here
         decimal[] arrInvoiceTotal = new decimal[5];
-        List<decimal> totals = new List<decimal>();
+        int currentIndex = 0;
+        //List<decimal> totals = new List<decimal>();
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
@@ -32,6 +33,9 @@ namespace InvoiceTotal
                         txtDiscountPct.Text = discountPct.ToString("p1");
                         txtDiscountAmt.Text = discountAmt.ToString("c");
                         txtTotal.Text = invoiceTotal.ToString("c");
+
+                        arrInvoiceTotal[currentIndex] = subtotal;
+                        currentIndex++;
                     }
                     else
                     {
@@ -53,6 +57,18 @@ namespace InvoiceTotal
         private void btnExit_Click(object sender, EventArgs e)
         {
             // TODO: add code that displays dialog boxes here
+            string strSubtotals = "";
+            foreach (decimal sutotal in arrInvoiceTotal)
+            {
+                if (sutotal != 0)
+                {
+                    strSubtotals += sutotal + "\n"; 
+                }
+                MessageBox.Show("The subtotals are:\n"
+                    + strSubtotals + "\n",
+                    "Subtotal List"
+                );
+            }
 
             this.Close();
         }
