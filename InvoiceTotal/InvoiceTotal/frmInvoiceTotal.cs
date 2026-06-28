@@ -8,6 +8,8 @@ namespace InvoiceTotal
         }
 
         // TODO: declare class variables for array and list here
+        decimal[] arrInvoiceTotal = new decimal[5];
+        List<decimal> totals = new List<decimal>();
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
