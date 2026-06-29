@@ -10,7 +10,10 @@ namespace InvoiceTotal
         // TODO: declare class variables for array and list here
         decimal[] arrInvoiceTotal = new decimal[5];
         int currentIndex = 0;
-        //List<decimal> totals = new List<decimal>();
+        //Code that creates a list
+        List<decimal> invoiceTotals = new List<decimal>(5);
+        int currentIndexList = 0;
+        
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
@@ -34,9 +37,13 @@ namespace InvoiceTotal
                         txtDiscountAmt.Text = discountAmt.ToString("c");
                         txtTotal.Text = invoiceTotal.ToString("c");
 
+                        //Adding the subtotal to the array and the list
                         arrInvoiceTotal[currentIndex] = subtotal;
-
+                        
+                        //invoiceTotals[currentIndexList] = subtotal;               --***       INVALID CODE        ***--
+                        invoiceTotals.Add(subtotal);
                         currentIndex++;
+                        currentIndexList++;
                     }
                     else
                     {
@@ -68,14 +75,26 @@ namespace InvoiceTotal
         {
             //Code that sorts the array
             Array.Sort(arrInvoiceTotal);
+            //Code that sorts the array
+            invoiceTotals.Sort();
 
             // TODO: add code that displays dialog boxes here
-            string strSubtotals = "";
+            string strSubtotalsArray = "";
             foreach (decimal subtotal in arrInvoiceTotal)
             {
                 if (subtotal != 0)
                 {
-                    strSubtotals += subtotal + "\n"; 
+                    strSubtotalsArray += subtotal + "\n"; 
+                }
+
+            }
+
+            string strSubtotalsList = "";
+            foreach (decimal subtotal in invoiceTotals)
+            {
+                if (subtotal != 0)
+                {
+                    strSubtotalsList += subtotal + "\n"; 
                 }
 
             }
@@ -83,7 +102,12 @@ namespace InvoiceTotal
 
 
             MessageBox.Show("The subtotals are:\n"
-                + strSubtotals + "\n",
+                + strSubtotalsArray + "\n",
+                "Subtotal List"
+            );
+
+            MessageBox.Show("The subtotals are:\n"
+                + strSubtotalsList + "\n",
                 "Subtotal List"
             );
 
