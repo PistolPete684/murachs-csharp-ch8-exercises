@@ -35,6 +35,7 @@ namespace InvoiceTotal
                         txtTotal.Text = invoiceTotal.ToString("c");
 
                         arrInvoiceTotal[currentIndex] = subtotal;
+
                         currentIndex++;
                     }
                     else
@@ -65,6 +66,9 @@ namespace InvoiceTotal
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            //Code that sorts the array
+            Array.Sort(arrInvoiceTotal);
+
             // TODO: add code that displays dialog boxes here
             string strSubtotals = "";
             foreach (decimal subtotal in arrInvoiceTotal)
@@ -75,6 +79,8 @@ namespace InvoiceTotal
                 }
 
             }
+
+
 
             MessageBox.Show("The subtotals are:\n"
                 + strSubtotals + "\n",
