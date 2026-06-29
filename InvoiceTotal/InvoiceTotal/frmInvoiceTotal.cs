@@ -41,15 +41,24 @@ namespace InvoiceTotal
                     {
                         MessageBox.Show(
                             "Subtotal must be greater than 0 and less than 10,000.",
-                            "Entry Error");
+                            "Entry Error"
+                            );
                     }
                 }
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                MessageBox.Show(
+                    ex.Message + " Limit of 5 subtotals per array",
+                     ex.GetType() + " Exception"
+                    );
             }
             catch
             {
                 MessageBox.Show(
                     "Please enter a valid number for the Subtotal field.",
-                    "Entry Error");
+                    "Entry Error"
+                    );
             }
             txtSubtotal.Focus();
         }
@@ -58,11 +67,11 @@ namespace InvoiceTotal
         {
             // TODO: add code that displays dialog boxes here
             string strSubtotals = "";
-            foreach (decimal sutotal in arrInvoiceTotal)
+            foreach (decimal subtotal in arrInvoiceTotal)
             {
-                if (sutotal != 0)
+                if (subtotal != 0)
                 {
-                    strSubtotals += sutotal + "\n"; 
+                    strSubtotals += subtotal + "\n"; 
                 }
 
             }
