@@ -8,6 +8,9 @@ namespace FutureValue
         }
 
         // TODO: Declare the rectangular array and the row index here
+        string[,] futureValuesArray = new string[10,4];
+        int currentRow = 0;
+        //int rowCount = futureValuesArray.GetLength(0);
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
@@ -26,6 +29,21 @@ namespace FutureValue
 
                     txtFutureValue.Text = futureValue.ToString("c");
                     txtMonthlyInvestment.Focus();
+
+                    //foreach ()
+                    if(currentRow < futureValuesArray.GetLength(0))
+                    {
+                        futureValuesArray[currentRow, 0] = monthlyInvestment.ToString("c");
+                        futureValuesArray[currentRow, 1] = yearlyInterestRate.ToString("p");
+                        futureValuesArray[currentRow, 2] = years.ToString();
+                        futureValuesArray[currentRow, 3] = futureValue.ToString("c");
+
+                        currentRow++;
+
+                    } else
+                    {
+                        MessageBox.Show("Array is full (max 10 rows).");
+                    }
                 }
             }
             catch(Exception ex)
